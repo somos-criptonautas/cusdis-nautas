@@ -93,8 +93,13 @@
 
   <div class="px-1">
     <button
-
-      class="text-sm bg-gray-200 p-2 px-4 font-bold dark:bg-transparent dark:border dark:border-gray-100"
+      class="inline-flex items-center justify-center
+         bg-gray-200 hover:bg-gray-300
+         text-lg font-bold
+         px-6 py-3
+         rounded-md
+         shadow-sm
+         focus:outline-none focus:ring-2 focus:ring-gray-400"
       class:cusdis-disabled={loading}
       on:click={addComment}>{loading ? t('sending') : t('post_comment')}</button
     >

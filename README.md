@@ -1,75 +1,68 @@
 
-<p align="center"><a href="https://cusdis.com" target="_blank" rel="noopener noreferrer"><img width="100" src="/public/images/artworks/logo-256.png" alt="logo"></a></p>
+This is a modified version of [Cusdis](https://github.com/djyde/cusdis), which is an open-source, lightweight, and privacy-friendly comments provider. I modified the style to match that of my blog: [Quantified Curiosities](https://quantifiedcuriosities.com).
 
-Cusdis is an open-source, lightweight (~5kb gzip), privacy-friendly alternative to Disqus.
+Modifications include:
+- Changed the font to match the blog.
+- Made the background transparent so it would blend in with the blog's design in light and dark modes.
+- The text color switches between light and dark modes.
+- Changed the design of the input boxes, and the submit and reply buttons.
 
-> Contact me if you want to buy/acquire this project 💖
+You can check it out on the blog's posts, for example [Mapping the Mythos part I](https://quantifiedcuriosities.com/posts/greek-myth-network1/).
 
-![](/public/images/landing.png)
+## Previews
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https%3A%2F%2Fgithub.com%2Fdjyde%2Fcusdis&plugins=postgresql&envs=NEXTAUTH_URL%2CDB_TYPE%2CDB_URL%2CUSERNAME%2CPASSWORD%2CHOST%2CJWT_SECRET%2CPORT&NEXTAUTH_URLDesc=Don%27t+modify+it&DB_TYPEDesc=Don%27t+modify+it&DB_URLDesc=Don%27t+modify+it&USERNAMEDesc=Username+to+sign+in&PASSWORDDesc=Password+to+sign+in&HOSTDesc=Don%27t+modify+it&JWT_SECRETDesc=A+secret+key+to+encrypt+JWT+token&PORTDesc=Don%27t+modify+it&NEXTAUTH_URLDefault=%24%7B%7B+RAILWAY_STATIC_URL+%7D%7D&DB_TYPEDefault=pgsql&DB_URLDefault=%24%7B%7B+DATABASE_URL+%7D%7D&HOSTDefault=https%3A%2F%2F%24%7B%7B+RAILWAY_STATIC_URL+%7D%7D&PORTDefault=3000&referralCode=randyloop)
+Text input boxes and the comment button in light and dark modes.
 
-## 💝 Sponsor this project
-
-If you like Cusdis, please consider sponsoring us to help us be sustainable.
-
-### Principle Sponsor
-
-[![Slide 16_9 - 1](https://github.com/djyde/cusdis/assets/914329/0a773f41-6baf-4bdc-897e-e96f56991acc)](https://epubkit.app)
+<div style="display: flex; gap:10px; margin-top: 10px; margin-bottom: 30px;">
+  <img src="public/images/light1.png" width=50%; />
+  <img src="public/images/dark1.png" width=50%; />
+</div>
 
 
-[![Contributors](https://opencollective.com/cusdis/tiers/organization-support/0/avatar.svg)](https://opencollective.com/cusdis/tiers/organization-support/0/website)
+Nested comments and reply buttons in light and dark modes.
 
-[Become a principle sponsor](https://opencollective.com/cusdis/contribute/organization-support-27992/checkout)
+<div style="display: flex; gap:10px; margin-top: 10px;">
+  <img src="public/images/light2.png" width=50%; />
+  <img src="public/images/dark2.png" width=50%; />
+</div>
 
-### Sponsors / Backers
+## Usage
 
-[![Contributors](https://opencollective.com/cusdis/tiers/sponsor.svg?avatarHeight=50)](https://opencollective.com/cusdis)
-[![Contributors](https://opencollective.com/cusdis/tiers/backer.svg?avatarHeight=50)](https://opencollective.com/cusdis)
+To use this modified version of Cusdis as is, you can self-host it by running the pre-built Docker image:
 
-## Features
+```bash
+docker run -d \
+  --name=cusdis-comments \
+  --restart always \
+  -e USERNAME={username} \
+  -e PASSWORD={password} \
+  -e JWT_SECRET=$(openssl rand -hex 16) \
+  -e DB_TYPE=sqlite \
+  -e DB_URL=file:/data/db.sqlite \
+  -e NEXTAUTH_URL={host_url} \
+  -e HOST={host_url} \
+  -v ~/cusdis-data:/data \
+  zaylaatsi/cusdis
+```
 
-- Lightweight comment widget, with i18n, dark mode.
-- Email notification
-- Webhook
-- Easy to self-host
-- Many integrations
+replace the variables in curly braces with your own values. A full description of these variables can be found in the [original Cusdis documentation](https://cusdis.com/doc#/self-host/docker). If you want to get email notifications for new comments (which would allow you to quickly approve/reject new comments without logging in), you can add the following environment variables to the docker run command as described in the [original Cusdis documentation](https://cusdis.com/doc#/features/notification):
 
-## Documentation
+```bash
+  -e SMTP_HOST={smtp_host} \
+  -e SMTP_PORT={smtp_port} \
+  -e SMTP_SECURE={smtp_secure} \
+  -e SMTP_USER={smtp_user} \
+  -e SMTP_PASSWORD={smtp_password} \
+  -e SMTP_SENDER={smtp_sender} \
+```
 
-https://cusdis.com/doc
+Of course, you can also clone this repository and build the docker image yourself, or serve the files directly following the instructions in the [original Cusdis documentation](https://cusdis.com/doc#/self-host/manual).
 
-## Community
+# Support the Project
 
-[Discord](https://discord.gg/eDs5fc4Jcq)
-
-## FAQ
-
-## Compared to Disqus
-
-Cusdis is not designed to be a complete alternative to Disqus. It's aim is to implement a minimalist and embeddable comment system for small websites (such as your static blog).
-
-Given below are the pros and cons of Cusdis:
-
-### Pros
-
-- Cusdis is open-source and self-hostable. Hence, you own your data.
-- The SDK is lightweight(~5kb gzipped).
-- Cusdis doesn't require your user to sign in to make a comment.
-- Cusdis doesn't use cookies at all.
-
-### Cons
-
-- Cusdis is on the early stages of its development.
-- There is no spam filter, hence, you will have to manually moderate your comment section and comments won't be displayed until you approve them.
-- Disqus is a company, we aren't.
-
-## Contributing
-
-[Contributing Guide](https://cusdis.com/doc#/contributing)
-
-If you are going to make a PR, remember to choose `dev` as the base branch.
+If you enjoyed this modified version of Cusdis, please consider [supporting the original project](https://github.com/djyde/cusdis?tab=readme-ov-file#-sponsor-this-project)
 
 # License
 
 GNU GPLv3
+
