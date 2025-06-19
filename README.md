@@ -13,18 +13,13 @@ You can check it out on the blog's posts, for example [Mapping the Mythos part I
 
 Text input boxes and the comment button in light and dark modes.
 
-<div style="display: flex; gap:10px; margin-top: 10px; margin-bottom: 30px;">
-  <img src="public/images/light1.png" width=50%; />
-  <img src="public/images/dark1.png" width=50%; />
-</div>
-
+| ![Image1](public/images/light1.png) | ![Image2](public/images/dark1.png) |
+|----------------|----------------|
 
 Nested comments and reply buttons in light and dark modes.
 
-<div style="display: flex; gap:10px; margin-top: 10px;">
-  <img src="public/images/light2.png" width=50%; />
-  <img src="public/images/dark2.png" width=50%; />
-</div>
+| ![Image1](public/images/light2.png) | ![Image2](public/images/dark2.png) |
+|----------------|----------------|
 
 ## Usage
 
