@@ -31,6 +31,10 @@ COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next ./.next
 COPY . /app
 
+RUN mkdir -p /data && chown -R node:node /data
+
 EXPOSE 3000/tcp
+
+USER node
 
 CMD ["npm", "run", "start:with-migrate"]
