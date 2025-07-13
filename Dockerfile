@@ -22,6 +22,7 @@ FROM node:16-alpine3.15 as runner
 ENV NODE_ENV=production
 ARG DB_TYPE=sqlite
 ENV DB_TYPE=$DB_TYPE
+ENV DB_URL=file:/data/cusdis.db
 
 WORKDIR /app
 
