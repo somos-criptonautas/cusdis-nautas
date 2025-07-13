@@ -1,20 +1,20 @@
 export default {
-  powered_by: 'Comments powered by Cusdis',
-  post_comment: 'Comment',
-  loading: 'Loading',
+  powered_by: 'Anonymous Comments.',
+  post_comment: 'comment',
+  loading: '...',
 
   // comment
-  email: 'Email (optional)',
-  nickname: 'Nickname',
-  reply_placeholder: 'Comment',
-  reply_btn: 'Reply',
-  sending: 'sending...',
+  email: 'e-mail (optional)',
+  nickname: 'nick',
+  reply_placeholder: 'comment',
+  reply_btn: 'reply',
+  sending: '...',
 
   // reply
   mod_badge: 'MOD',
-  content_is_required: 'Content is required',
-  nickname_is_required: 'Nickname is required',
+  content_is_required: 'you must type something',
+  nickname_is_required: 'chose your nick!',
 
   comment_has_been_sent:
-    'Your comment has been sent. Please wait for approval.',
+    'comment sent, please wait for approval.',
 }

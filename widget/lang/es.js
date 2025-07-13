@@ -1,21 +1,21 @@
 window.CUSDIS_LOCALE = {
-    powered_by: 'Desarrollado por Cusdis',
-    post_comment: 'Comentar',
-    loading: 'Cargando',
+    powered_by: 'Comentarios anónimos.',
+    post_comment: 'comentar',
+    loading: '...',
   
     // comment
-    email: 'Correo electrónico (opcional)',
-    nickname: 'Nombre',
-    reply_placeholder: 'Responder...',
-    reply_btn: 'Responder',
-    sending: 'Enviando...',
+    email: 'e-mail (opcional)',
+    nickname: 'nick',
+    reply_placeholder: 'aquí va tu mensaje',
+    reply_btn: 'responder',
+    sending: 'enviando...',
   
     // reply
     mod_badge: 'MOD',
-    content_is_required: 'El contenido es obligatorio',
-    nickname_is_required: 'El nombre es obligatorio',
+    content_is_required: 'debes escribir algo',
+    nickname_is_required: 'elige un nick!',
   
     comment_has_been_sent:
-      'Tu comentario ha sido enviado. Por favor, espera su aprobación.',
+      'comentario enviado, espera su aprobación.',
   }
   

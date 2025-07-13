@@ -40,7 +40,11 @@ docker run -d \
   zaylaatsi/cusdis
 ```
 
-replace the variables in curly braces with your own values. A full description of these variables can be found in the [original Cusdis documentation](https://cusdis.com/doc#/self-host/docker). If you want to get email notifications for new comments (which would allow you to quickly approve/reject new comments without logging in), you can add the following environment variables to the docker run command as described in the [original Cusdis documentation](https://cusdis.com/doc#/features/notification):
+Replacing the variables in curly braces with your own values.
+
+A full description of these variables can be found in the [original Cusdis documentation](https://cusdis.com/doc#/self-host/docker).
+
+If you want to get email notifications for new comments (which would allow you to quickly approve/reject new comments without logging in), you can add the following environment variables to the docker run command as described in the [original Cusdis documentation](https://cusdis.com/doc#/features/notification):
 
 ```bash
   -e SMTP_HOST={smtp_host} \
