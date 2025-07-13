@@ -92,8 +92,9 @@
     {#if message}
       <div class="p-2 mb-4 bg-blue-500 text-white">
         {message}
-      </div>
-    {/if}
+    </div>
+  </div>
+{/if}
 
     <Reply />
 
