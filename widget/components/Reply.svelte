@@ -69,6 +69,16 @@
         bind:value={nickname}
       />
     </div>
+    <div class="px-1">
+      <label class="mb-2 block dark:text-gray-200" for="email">{t('email')}</label>
+      <input
+        name="email"
+        class="w-full p-2 border border-gray-200 bg-transparent  dark:text-gray-100 dark:outline-none"
+        type="email"
+        title={t('email')}
+        bind:value={email}
+      />
+    </div>
   </div>
 
   <div class="px-1">
