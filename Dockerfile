@@ -1,41 +1,50 @@
-FROM node:18-alpine as builder
+# ---- Builder ----
+FROM node:18-alpine AS builder
 
-VOLUME [ "/data" ]
+# Install dependencies
+RUN apk add --no-cache openssl python3 py3-pip make gcc g++
 
+# Set build-time arguments
 ARG DB_TYPE=sqlite
 ENV DB_TYPE=$DB_TYPE
 
-RUN apk add --no-cache python3 py3-pip make gcc g++ openssl
-
-COPY . /app
-
-COPY package.json yarn.lock /app/
-
+# Set working directory
 WORKDIR /app
 
+# Copy source code
+COPY . .
+
+# Install and build
 RUN npm install -g pnpm
-RUN yarn install --frozen-lockfile
-RUN npm run build:without-migrate
+RUN pnpm install --frozen-lockfile
+RUN npm run build
 
-FROM node:18-alpine as runner
+# ---- Runner ----
+FROM node:18-alpine AS runner
 
+# Set environment variables
 ENV NODE_ENV=production
 ARG DB_TYPE=sqlite
 ENV DB_TYPE=$DB_TYPE
 ENV DB_URL=file:/data/cusdis.db
 
+# Set working directory
 WORKDIR /app
 
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/public ./public
+# Copy built artifacts from builder
 COPY --from=builder /app/.next ./.next
-COPY . /app
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./
 
+# Create data directory and set permissions
 RUN mkdir -p /data && chown -R node:node /data
-RUN chown -R node:node /app
 
+# Expose port
 EXPOSE 3000/tcp
 
+# Run as non-root user
 USER node
 
-CMD ["npm", "run", "start:with-migrate"]
+# Start the application
+CMD ["npm", "run", "start"]
