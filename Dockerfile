@@ -41,6 +41,9 @@ COPY --from=builder /app/package.json ./
 # Create data directory and set permissions
 RUN mkdir -p /data && chown -R node:node /data
 
+# Install OpenSSL 1.1 for Prisma
+RUN apk add --no-cache openssl1.1-compat
+
 # Expose port
 EXPOSE 3000/tcp
 
