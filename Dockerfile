@@ -15,7 +15,7 @@ WORKDIR /app
 COPY . .
 
 # Install and build
-RUN npm install -g pnpm
+RUN npm install -g pnpm@8
 RUN pnpm install --frozen-lockfile
 RUN npm run build
 
