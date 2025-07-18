@@ -112,7 +112,7 @@
           <div>
             {#each Array(commentsResult.pageCount) as _, index}
               <button
-                class="px-2 py-1 text-sm mr-2 dark:text-gray-200"
+                class="global-button"
                 class:underline={page === index + 1}
                 on:click={(_) => onClickPage(index + 1)}>{index + 1}</button
               >
