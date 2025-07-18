@@ -5,7 +5,7 @@ VOLUME [ "/data" ]
 ARG DB_TYPE=sqlite
 ENV DB_TYPE=$DB_TYPE
 
-RUN apk add --no-cache python3 py3-pip make gcc g++
+RUN apk add --no-cache python3 py3-pip make gcc g++ openssl
 
 COPY . /app
 
@@ -32,6 +32,7 @@ COPY --from=builder /app/.next ./.next
 COPY . /app
 
 RUN mkdir -p /data && chown -R node:node /data
+RUN chown -R node:node /app
 
 EXPOSE 3000/tcp
 
