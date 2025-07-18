@@ -7,6 +7,7 @@ RUN apk add --no-cache openssl python3 py3-pip make gcc g++
 # Set build-time arguments
 ARG DB_TYPE=sqlite
 ENV DB_TYPE=$DB_TYPE
+ENV DB_URL=file:/data/cusdis.db
 
 # Set working directory
 WORKDIR /app
