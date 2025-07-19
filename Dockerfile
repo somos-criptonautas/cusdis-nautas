@@ -1,5 +1,5 @@
 # ---- Builder ----
-FROM node:18-alpine AS builder
+FROM node:18-alpine3.18 AS builder
 
 # Install dependencies
 RUN apk add --no-cache openssl python3 py3-pip make gcc g++
@@ -21,7 +21,7 @@ RUN pnpm install
 RUN npm run build
 
 # ---- Runner ----
-FROM node:18-alpine AS runner
+FROM node:18-alpine3.18 AS runner
 
 # Set environment variables
 ENV NODE_ENV=production
