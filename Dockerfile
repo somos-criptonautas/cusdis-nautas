@@ -2,7 +2,7 @@
 FROM node:18-alpine3.18 AS builder
 
 # Install dependencies
-RUN apk add --no-cache openssl python3 py3-pip make gcc g++
+RUN apk add --no-cache openssl openssl1.1-compat python3 py3-pip make gcc g++
 
 # Set build-time arguments
 ARG DB_TYPE=sqlite
